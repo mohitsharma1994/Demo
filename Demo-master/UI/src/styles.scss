@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+*/
+/*html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}*/
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+    
+button {
+  margin: 0 8px 8px 0;
+}
+
+
+.carright {
+  width: 15%;
+  float: right;
+  margin-top: 8px;
+  margin-right: 20px;
+}
+.cardLeft {
+  width: 15%;
+  float: left;
+  margin-top: 8px;
+  margin-right: 20px;
+}
+.cardLeft40 {
+  width: 40%;
+  float: left;
+  margin-top: 8px;
+  margin-right: 20px;
+}
+
+.mat-mdc-card {
+  box-shadow: none;
+}
+
+.tablew {
+  margin: 50px;
+  padding: 18px;
+}
+
+
+
+
+
+
+

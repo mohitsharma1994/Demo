@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<mat-card>
+  <mat-card-content>
+    <div class="mat-elevation-z8 tablew">
+      <mat-card class="cardLeft40">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>User</mat-label>
+          <mat-select id="selCountry" name="country" (selectionChange)="selectUser($event.value)" [(ngModel)]="user.id">
+            <mat-option *ngFor="let item of userlist" value={{item?.id}}>
+              {{item?.firstName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card>
+
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" matSortActive="carbs" matSortDirection="asc">
+
+        <ng-container matColumnDef="isSuccess">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.isSuccess}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="loginTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Login Time</th>
+          <td mat-cell *matCellDef="let element"> {{element.loginTime }} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="logoutTime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> LogOut Time </th>
+          <td mat-cell *matCellDef="let element"> {{element.logoutTime }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [length]="length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

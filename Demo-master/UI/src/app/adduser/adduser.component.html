@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="saveDetails(form)">
+      <p>
+        <mat-form-field appearance="outline" class="input">
+          <mat-label>First Name</mat-label>
+          <input matInput maxlength="50" inputmode="tel" [(ngModel)]="user.firstName" placeholder="Type First Name" formControlName="fname">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error>First Name is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput maxlength="50" inputmode="tel" [(ngModel)]="user.lastName" placeholder="Type Last Name" formControlName="lname">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>                                             
+          <mat-error>Last Name is required</mat-error>
+        </mat-form-field>
+      </p>                                                        
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Address:</mat-label>
+          <input matInput maxlength="250" type="email" formControlName="email" [(ngModel)]="user.email" placeholder="Your email">
+          <mat-icon matSuffix>mail_outline</mat-icon>
+          <mat-error *ngIf="!form.controls['email'].invalid">Email is required</mat-error>         
+          <mat-error *ngIf="form.controls['email'].invalid">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile No</mat-label>
+          <input matInput type="number" inputmode="tel" [(ngModel)]="user.phoneNumber" placeholder="Enter mobile" formControlName="mobile" onKeyPress="if(this.value.length==10) return false;" >
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="!form.controls['mobile'].errors?.['pattern']">Mobile is required</mat-error>
+          <mat-error *ngIf="form.controls['mobile'].errors?.['pattern']">
+            Please, Enter 10 digit Mobile Number
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput inputmode="tel" [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" placeholder="Enter password" formControlName="password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="!form.controls['password'].errors?.['pattern'] && !form.controls['password'].errors?.['minlength']">Password is required</mat-error>
+          <mat-error *ngIf="form.controls['password'].errors?.['minlength'] && form.controls['password'].errors?.['pattern']">
+            Please enter more than 6 character
+          </mat-error>
+          <mat-error *ngIf="form.controls['password'].errors?.['pattern']">
+            Please enter Valid Password
+          </mat-error>
+        </mat-form-field>
+      </p>      
+      <div mat-dialog-actions align="end" class="tcenter">
+        <button mat-raised-button class="m-t" type="submit" [disabled]="!form.valid">Submit</button>
+      </div>
+    </form>  
+  </mat-card-content>
+</mat-card>
+</div>
